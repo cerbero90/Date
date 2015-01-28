@@ -1,0 +1,23 @@
+{
+    "name": "cerbero/date",
+    "description": "Framework agnostic and easy to use tool to work with dates.",
+    "keywords": ["date", "DateTime"],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "homepage": "https://github.com/cerbero90/Date",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrea Marco Sartori",
+            "email": "andrea.marco.sartori@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": ["src/Date.php"]
+    },
+    "minimum-stability": "stable"
+}
