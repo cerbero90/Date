@@ -8,6 +8,11 @@ use DateTime;
 
 class DateSpec extends ObjectBehavior
 {
+    function let()
+    {
+        date_default_timezone_set('Europe/Rome');
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Cerbero\Date');
