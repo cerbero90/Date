@@ -128,7 +128,9 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-03');
 		$four  = new DateTime('2000-01-04');
 
-		static::format([$one, $two, $three, $four], 'd/m/Y')->shouldReturn(['01/01/2000', '02/01/2000', '03/01/2000', '04/01/2000']);
+        $expected = array('01/01/2000', '02/01/2000', '03/01/2000', '04/01/2000');
+
+		static::format(array($one, $two, $three, $four), 'd/m/Y')->shouldReturn($expected);
     }
 
     /**
@@ -144,7 +146,9 @@ class DateSpec extends ObjectBehavior
 		$three = '2000-01-03';
 		$four  = new DateTime('2000-01-04');
 
-    	static::format([$one, $two, $three, $four], 'd/m/Y')->shouldReturn(['01/01/2000', '02/01/2000', '03/01/2000', '04/01/2000']);
+        $expected = array('01/01/2000', '02/01/2000', '03/01/2000', '04/01/2000');
+
+    	static::format(array($one, $two, $three, $four), 'd/m/Y')->shouldReturn($expected);
     }
 
     /**
@@ -194,7 +198,7 @@ class DateSpec extends ObjectBehavior
 		$two   = '2000-01-02';
 		$three = new DateTime('2000-01-03');
 
-    	static::timestamp([$one, $two, $three])->shouldReturn([946681200, 946767600, 946854000]);
+    	static::timestamp(array($one, $two, $three))->shouldReturn(array(946681200, 946767600, 946854000));
     }
 
     /**
@@ -364,7 +368,7 @@ class DateSpec extends ObjectBehavior
         $three = new DateTime('2000-01-03');
         $four  = new DateTime('2000-01-04');
 
-        static::before('2000-01-03', [$one, $two, $three, $four])->shouldReturn([$one, $two]);
+        static::before('2000-01-03', array($one, $two, $three, $four))->shouldReturn(array($one, $two));
     }
 
     /**
@@ -380,7 +384,7 @@ class DateSpec extends ObjectBehavior
         $three = new DateTime('2000-01-03');
         $four  = new DateTime('2000-01-04');
 
-        static::after('2000-01-01', [$one, $two, $three, $four])->shouldReturn([$two, $three, $four]);
+        static::after('2000-01-01', array($one, $two, $three, $four))->shouldReturn(array($two, $three, $four));
     }
 
     /**
@@ -460,7 +464,7 @@ class DateSpec extends ObjectBehavior
 		$three = '2000-01-02';
 		$four  = '2000-01-03';
 
-    	static::sort($four, $three, $one, $two)->shouldReturn([$one, $two, $three, $four]);
+    	static::sort($four, $three, $one, $two)->shouldReturn(array($one, $two, $three, $four));
     }
 
     /**
@@ -476,7 +480,7 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-02');
 		$four  = new DateTime('2000-01-03');
 
-    	static::sort($three, $one, $two, $four)->shouldReturn([$one, $three, $two, $four]);
+    	static::sort($three, $one, $two, $four)->shouldReturn(array($one, $three, $two, $four));
     }
 
     /**
@@ -492,7 +496,7 @@ class DateSpec extends ObjectBehavior
 		$three = '2000-01-02';
 		$four  = new DateTime('2000-01-03');
 
-    	static::sort($two, $three, $one, $four)->shouldReturn([$one, $three, $two, $four]);
+    	static::sort($two, $three, $one, $four)->shouldReturn(array($one, $three, $two, $four));
     }
 
     /**
@@ -508,7 +512,7 @@ class DateSpec extends ObjectBehavior
 		$three = '2000-01-02';
 		$four  = new DateTime('2000-01-03');
 
-    	static::sort(array($three, $two, $four, $one))->shouldReturn([$one, $two, $three, $four]);
+    	static::sort(array($three, $two, $four, $one))->shouldReturn(array($one, $two, $three, $four));
     }
 
     /**
@@ -524,7 +528,7 @@ class DateSpec extends ObjectBehavior
 		$three = '2000-01-02';
 		$four  = '2000-01-03';
 
-    	static::reverse($four, $three, $one, $two)->shouldReturn([$four, $three, $two, $one]);
+    	static::reverse($four, $three, $one, $two)->shouldReturn(array($four, $three, $two, $one));
     }
 
     /**
@@ -540,7 +544,7 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-02');
 		$four  = new DateTime('2000-01-03');
 
-    	static::reverse($three, $one, $two, $four)->shouldReturn([$four, $two, $three, $one]);
+    	static::reverse($three, $one, $two, $four)->shouldReturn(array($four, $two, $three, $one));
     }
 
     /**
@@ -556,7 +560,7 @@ class DateSpec extends ObjectBehavior
 		$three = '2000-01-02';
 		$four  = new DateTime('2000-01-03');
 
-    	static::reverse($two, $three, $one, $four)->shouldReturn([$four, $three, $two, $one]);
+    	static::reverse($two, $three, $one, $four)->shouldReturn(array($four, $three, $two, $one));
     }
 
     /**
@@ -572,7 +576,7 @@ class DateSpec extends ObjectBehavior
 		$three = '2000-01-02';
 		$four  = new DateTime('2000-01-03');
 
-    	static::reverse(array($three, $two, $four, $one))->shouldReturn([$four, $two, $three, $one]);
+    	static::reverse(array($three, $two, $four, $one))->shouldReturn(array($four, $two, $three, $one));
     }
 
     /**
@@ -588,7 +592,7 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-03');
 		$four  = new DateTime('2000-01-04');
 
-    	static::range('2000-01-01', '2000-01-04')->shouldBeLike([$one, $two, $three, $four]);
+    	static::range('2000-01-01', '2000-01-04')->shouldBeLike(array($one, $two, $three, $four));
     }
 
     /**
@@ -604,7 +608,7 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-05');
 		$four  = new DateTime('2000-01-07');
 
-    	static::range('2000-01-01', '2000-01-08', 2)->shouldBeLike([$one, $two, $three, $four]);
+    	static::range('2000-01-01', '2000-01-08', 2)->shouldBeLike(array($one, $two, $three, $four));
     }
 
     /**
@@ -620,7 +624,7 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-03');
 		$four  = new DateTime('2000-01-04');
 
-    	static::range('2000-01-04', '2000-01-01')->shouldBeLike([$one, $two, $three, $four]);
+    	static::range('2000-01-04', '2000-01-01')->shouldBeLike(array($one, $two, $three, $four));
     }
 
     /**
@@ -636,9 +640,9 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-03');
 		$four  = new DateTime('2000-01-04');
 
-    	static::inArray('2000-01-03', [$one, $two, $three, $four])->shouldReturn(true);
+    	static::inArray('2000-01-03', array($one, $two, $three, $four))->shouldReturn(true);
 
-    	static::inArray('2000-01-05', [$one, $two, $three, $four])->shouldReturn(false);
+    	static::inArray('2000-01-05', array($one, $two, $three, $four))->shouldReturn(false);
     }
 
     /**
@@ -654,8 +658,8 @@ class DateSpec extends ObjectBehavior
 		$three = new DateTime('2000-01-03');
 		$four  = new DateTime('2000-01-04');
 
-    	static::inArray(new DateTime('2000-01-02'), [$one, $two, $three, $four])->shouldReturn(true);
+    	static::inArray(new DateTime('2000-01-02'), array($one, $two, $three, $four))->shouldReturn(true);
 
-    	static::inArray(new DateTime('2000-01-05'), [$one, $two, $three, $four])->shouldReturn(false);
+    	static::inArray(new DateTime('2000-01-05'), array($one, $two, $three, $four))->shouldReturn(false);
     }
 }
