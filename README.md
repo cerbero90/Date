@@ -63,7 +63,7 @@ $string = Date::format(new DateTime('2014-04-01'), 'jS F, Y');
 $array = Date::format(array('Nov-12-10', new DateTime('2014-04-01')), 'd/m/y');
 ```
 ### Calculate the timestamp of one or more dates
-Both strings, array and DateTime objects are allowed as parameter. You can also pass unlimited arguments.
+Both strings, array and DateTime objects are allowed as parameter.
 
 It returns one or many integer timestamps depending on the number of given parameters.
 
