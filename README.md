@@ -62,6 +62,33 @@ $string = Date::format(new DateTime('2014-04-01'), 'jS F, Y');
 // array('12/11/10', '01/04/14')
 $array = Date::format(array('Nov-12-10', new DateTime('2014-04-01')), 'd/m/y');
 ```
+### Calculate gap between two dates
+Both strings and DateTime objects are allowed as parameters. It doesn't matter the order of the dates.
+
+While the `gap()` method returns an array with the gap details, the other methods return an integer:
+
+```php
+// array('years' => 0, 'months' => 11, 'days' => 30, 'hours' => 14, 'minutes' => 48, 'seconds' => 57)
+$array = Date::gap('2000-01-01 09:11:03', '1 January 2001');
+
+// 3600
+$int = Date::gapInSeconds('January 1st, 2000', '2000-01-01 01:00:00');
+
+// 60
+$int = Date::gapInMinutes(new DateTime('2000-01-01'), '2000-01-01 01:00:00');
+
+// 0
+$int = Date::gapInHours('2000-01-01 00:59:00', '2000-01-01 00:00:00');
+
+// 14
+$int = Date::gapInDays('last week', 'next week');
+
+// 13
+$int = Date::gapInMonths('August 2014', '2013 July');
+
+// 9
+$int = Date::gapInYears('5 Jan 2010', new DateTime('2000-02-05'));
+```
 ### Calculate the timestamp of one or more dates
 Both strings, array and DateTime objects are allowed as parameter.
 
