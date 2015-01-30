@@ -117,7 +117,7 @@ class Date
 	}
 
 	/**
-	 * Calculate the difference in days between two dates.
+	 * Calculate the difference between two dates.
 	 *
 	 * @author	Andrea Marco Sartori
 	 * @param	string|DateTime	$date1
@@ -126,9 +126,113 @@ class Date
 	 */
 	public static function gap($date1, $date2)
 	{
+		$keys = array('years', 'months', 'days', 'hours', 'minutes', 'seconds');
+
+		$gap = static::calculateGap($date1, $date2, '%y %m %d %h %i %s');
+
+		$values = array_map('intval', explode(' ', $gap));
+
+		return array_combine($keys, $values);
+	}
+
+	/**
+	 * Calculate the gap between two dates.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	string|DateTime	$date1
+	 * @return	string
+	 */
+	protected static function calculateGap($date1, $date2, $format)
+	{
 		list($date1, $date2) = static::create($date1, $date2);
 
-		return (int) $date1->diff($date2)->format('%a');
+		return $date1->diff($date2)->format($format);
+	}
+
+	/**
+	 * Calculate the difference in days between two dates.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	string|DateTime	$date1
+	 * @param	string|DateTime	$date2
+	 * @return	integer
+	 */
+	public static function gapInDays($date1, $date2)
+	{
+		return (int) static::calculateGap($date1, $date2, '%a');
+	}
+
+	/**
+	 * Calculate the difference in months between two dates.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	string|DateTime	$date1
+	 * @param	string|DateTime	$date2
+	 * @return	integer
+	 */
+	public static function gapInMonths($date1, $date2)
+	{
+		$months = static::calculateGap($date1, $date2, '%m');
+
+		return static::gapInYears($date1, $date2) * 12 + $months;
+	}
+
+	/**
+	 * Calculate the difference in years between two dates.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	string|DateTime	$date1
+	 * @param	string|DateTime	$date2
+	 * @return	integer
+	 */
+	public static function gapInYears($date1, $date2)
+	{
+		return (int) static::calculateGap($date1, $date2, '%y');
+	}
+
+	/**
+	 * Calculate the difference in seconds between two dates.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	string|DateTime	$date1
+	 * @param	string|DateTime	$date2
+	 * @return	integer
+	 */
+	public static function gapInSeconds($date1, $date2)
+	{
+		list($date1, $date2) = static::timestamp(array($date1, $date2));
+
+		return abs($date1 - $date2);
+	}
+
+	/**
+	 * Calculate the difference in minutes between two dates.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	string|DateTime	$date1
+	 * @param	string|DateTime	$date2
+	 * @return	integer
+	 */
+	public static function gapInMinutes($date1, $date2)
+	{
+		$seconds = static::gapInSeconds($date1, $date2);
+
+		return intval($seconds / 60);
+	}
+
+	/**
+	 * Calculate the difference in hours between two dates.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	string|DateTime	$date1
+	 * @param	string|DateTime	$date2
+	 * @return	integer
+	 */
+	public static function gapInHours($date1, $date2)
+	{
+		$seconds = static::gapInSeconds($date1, $date2);
+
+		return intval($seconds / 3600);
 	}
 
 	/**
