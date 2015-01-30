@@ -152,6 +152,26 @@ class DateSpec extends ObjectBehavior
     }
 
     /**
+     * @testdox    It retrieves an array with the gap of two dates.
+     *
+     * @author    Andrea Marco Sartori
+     * @return    void
+     */
+    public function it_retrieves_an_array_with_the_gap_of_two_dates()
+    {
+        $one = '2000-01-01 09:11:03';
+        $two = '2001-01-01';
+
+        $expected = array('years' => 0, 'months' => 11, 'days' => 30, 'hours' => 14, 'minutes' => 48, 'seconds' => 57);
+
+        static::gap($one, $two)->shouldReturn($expected);
+
+        static::gap($two, $one)->shouldReturn($expected);
+
+        static::gap($one, new DateTime($two))->shouldReturn($expected);
+    }
+
+    /**
      * @testdox	It calculates the difference in days between two dates.
      *
      * @author	Andrea Marco Sartori
@@ -159,9 +179,88 @@ class DateSpec extends ObjectBehavior
      */
     public function it_calculates_the_difference_in_days_between_two_dates()
     {
-    	static::gap('2000-01-01', '2000-01-10')->shouldReturn(9);
+    	static::gapInDays('2000-01-01', '2000-01-10')->shouldReturn(9);
 
-    	static::gap('2000-01-10', '2000-01-01')->shouldReturn(9);
+    	static::gapInDays('2000-01-10', '2000-01-01')->shouldReturn(9);
+
+        static::gapInDays('2000-01-01', new DateTime('2000-01-10'))->shouldReturn(9);
+    }
+
+    /**
+     * @testdox    It calculates the difference in months between two dates.
+     *
+     * @author    Andrea Marco Sartori
+     * @return    void
+     */
+    public function it_calculates_the_difference_in_months_between_two_dates()
+    {
+        static::gapInMonths('2000-01-01', '2001-01-01')->shouldReturn(12);
+
+        static::gapInMonths('2001-01-01', '2000-01-01')->shouldReturn(12);
+
+        static::gapInMonths('2000-01-01', new DateTime('2001-01-01'))->shouldReturn(12);
+    }
+
+    /**
+     * @testdox    It calculates the difference in years between two dates.
+     *
+     * @author    Andrea Marco Sartori
+     * @return    void
+     */
+    public function it_calculates_the_difference_in_years_between_two_dates()
+    {
+        static::gapInYears('2000-01-01', '2000-12-31')->shouldReturn(0);
+
+        static::gapInYears('2000-01-01', '2001-01-01')->shouldReturn(1);
+
+        static::gapInYears('2001-01-01', '2000-01-01')->shouldReturn(1);
+
+        static::gapInYears('2000-01-01', new DateTime('2001-01-01'))->shouldReturn(1);
+    }
+
+    /**
+     * @testdox    It calculates the difference in seconds between two dates.
+     *
+     * @author    Andrea Marco Sartori
+     * @return    void
+     */
+    public function it_calculates_the_difference_in_seconds_between_two_dates()
+    {
+        static::gapInSeconds('2000-01-01 00:00:03', '2000-01-01 00:00:00')->shouldReturn(3);
+
+        static::gapInSeconds('2000-01-01 00:00:00', '2000-01-01 00:01:00')->shouldReturn(60);
+
+        static::gapInSeconds('2000-01-01 01:00:00', new DateTime('2000-01-01 00:00:00'))->shouldReturn(3600);
+    }
+
+    /**
+     * @testdox    It calculates the difference in minutes between two dates.
+     *
+     * @author    Andrea Marco Sartori
+     * @return    void
+     */
+    public function it_calculates_the_difference_in_minutes_between_two_dates()
+    {
+        static::gapInMinutes('2000-01-01 00:00:03', '2000-01-01 00:00:00')->shouldReturn(0);
+
+        static::gapInMinutes('2000-01-01 00:00:00', '2000-01-01 00:01:00')->shouldReturn(1);
+
+        static::gapInMinutes('2000-01-01 01:00:00', new DateTime('2000-01-01 00:00:00'))->shouldReturn(60);
+    }
+
+    /**
+     * @testdox    It calculates the difference in hours between two dates.
+     *
+     * @author    Andrea Marco Sartori
+     * @return    void
+     */
+    public function it_calculates_the_difference_in_hours_between_two_dates()
+    {
+        static::gapInHours('2000-01-01 00:00:00', '2000-01-01 00:59:59')->shouldReturn(0);
+
+        static::gapInHours('2000-01-01 01:00:00', '2000-01-01 00:00:00')->shouldReturn(1);
+
+        static::gapInHours('2000-01-02 00:00:00', new DateTime('2000-01-01 00:00:00'))->shouldReturn(24);
     }
 
     /**
