@@ -135,7 +135,7 @@ class Date
 	 * Retrieve the UNIX timestamp of a date or array of dates.
 	 *
 	 * @author	Andrea Marco Sartori
-	 * @param	string|DateTime	$date
+	 * @param	string|DateTime|array	$date
 	 * @return	integer
 	 */
 	public static function timestamp($date)
