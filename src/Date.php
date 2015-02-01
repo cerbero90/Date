@@ -9,8 +9,7 @@ use DateInterval;
  *
  * @author	Andrea Marco Sartori
  */
-class Date
-{
+class Date {
 
 	/**
 	 * Create one or many dates.
@@ -34,7 +33,7 @@ class Date
 	 * @param	array	$args
 	 * @return	array
 	 */
-	private static function listArgs($args)
+	protected static function listArgs($args)
 	{
 		return is_array($args[0]) ? $args[0] : $args;
 	}
@@ -65,7 +64,7 @@ class Date
 	 * @param	array	$dates
 	 * @return	mixed
 	 */
-	private static function oneOrMany(array $dates)
+	protected static function oneOrMany(array $dates)
 	{
 		return count($dates) == 1 ? $dates[0] : $dates;
 	}
@@ -92,6 +91,8 @@ class Date
 	 */
 	public static function format($date, $format)
 	{
+		$results = array();
+
 		$dates = static::forceArray($date);
 
 		foreach ($dates as $date)
@@ -109,7 +110,7 @@ class Date
 	 * @param	string|DateTime|array	$date
 	 * @return	array
 	 */
-	private static function forceArray($date)
+	protected static function forceArray($date)
 	{
 		$date = static::create($date);
 
@@ -140,6 +141,8 @@ class Date
 	 *
 	 * @author	Andrea Marco Sartori
 	 * @param	string|DateTime	$date1
+	 * @param	string|DateTime	$date2
+	 * @param	string	$format
 	 * @return	string
 	 */
 	protected static function calculateGap($date1, $date2, $format)
@@ -240,7 +243,7 @@ class Date
 	 *
 	 * @author	Andrea Marco Sartori
 	 * @param	string|DateTime|array	$date
-	 * @return	integer
+	 * @return	integer|array
 	 */
 	public static function timestamp($date)
 	{
