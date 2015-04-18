@@ -353,9 +353,22 @@ class Date {
 	{
 		$dates = static::listArgs(func_get_args());
 
-		return array_reduce($dates, function($carry, $date)
+		return static::reduceDates($dates, 'lt');
+	}
+
+	/**
+	 * Reduce the given dates by applying a filter.
+	 *
+	 * @author	Andrea Marco Sartori
+	 * @param	array	$dates
+	 * @param	string	$filter
+	 * @return	string|DateTime
+	 */
+	protected static function reduceDates(array $dates, $filter)
+	{
+		return array_reduce($dates, function($carry, $date) use($filter)
 		{
-			return static::lt($carry, $date) ? $carry : $date;
+			return static::$filter($carry, $date) ? $carry : $date;
 
 		}, $dates[0]);
 	}
@@ -370,11 +383,7 @@ class Date {
 	{
 		$dates = static::listArgs(func_get_args());
 
-		return array_reduce($dates, function($carry, $date)
-		{
-			return static::gt($carry, $date) ? $carry : $date;
-
-		}, $dates[0]);
+		return static::reduceDates($dates, 'gt');
 	}
 
 	/**

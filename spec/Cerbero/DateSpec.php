@@ -592,8 +592,8 @@ class DateSpec extends ObjectBehavior
     {
     	$one   = new DateTime('2000-01-01');
 		$two   = new DateTime('2000-01-02');
-		$three = '2000-01-02';
-		$four  = new DateTime('2000-01-03');
+		$three = '2000-01-03';
+		$four  = new DateTime('2000-01-04');
 
     	static::sort($two, $three, $one, $four)->shouldReturn(array($one, $three, $two, $four));
     }
@@ -608,8 +608,8 @@ class DateSpec extends ObjectBehavior
     {
     	$one   = new DateTime('2000-01-01');
 		$two   = new DateTime('2000-01-02');
-		$three = '2000-01-02';
-		$four  = new DateTime('2000-01-03');
+		$three = '2000-01-03';
+		$four  = new DateTime('2000-01-04');
 
     	static::sort(array($three, $two, $four, $one))->shouldReturn(array($one, $two, $three, $four));
     }
@@ -640,8 +640,8 @@ class DateSpec extends ObjectBehavior
     {
 		$one   = new DateTime('2000-01-01');
 		$two   = new DateTime('2000-01-02');
-		$three = new DateTime('2000-01-02');
-		$four  = new DateTime('2000-01-03');
+		$three = new DateTime('2000-01-03');
+		$four  = new DateTime('2000-01-04');
 
     	static::reverse($three, $one, $two, $four)->shouldReturn(array($four, $two, $three, $one));
     }
@@ -656,8 +656,8 @@ class DateSpec extends ObjectBehavior
     {
     	$one   = new DateTime('2000-01-01');
 		$two   = new DateTime('2000-01-02');
-		$three = '2000-01-02';
-		$four  = new DateTime('2000-01-03');
+		$three = '2000-01-03';
+		$four  = new DateTime('2000-01-04');
 
     	static::reverse($two, $three, $one, $four)->shouldReturn(array($four, $three, $two, $one));
     }
@@ -672,8 +672,8 @@ class DateSpec extends ObjectBehavior
     {
     	$one   = new DateTime('2000-01-01');
 		$two   = new DateTime('2000-01-02');
-		$three = '2000-01-02';
-		$four  = new DateTime('2000-01-03');
+		$three = '2000-01-03';
+		$four  = new DateTime('2000-01-04');
 
     	static::reverse(array($three, $two, $four, $one))->shouldReturn(array($four, $two, $three, $one));
     }
