@@ -1,9 +1,14 @@
 # Date
-[![Build Status](https://travis-ci.org/cerbero90/Date.svg?branch=1.0.2)](https://travis-ci.org/cerbero90/Date)
-[![Release Version](https://img.shields.io/github/tag/cerbero90/Date.svg?style=flat&label=stable)](https://packagist.org/packages/cerbero/date)
-[![License](https://img.shields.io/packagist/l/cerbero/Date.svg?style=flat)](https://packagist.org/packages/cerbero/date)
-[![Code Climate](https://codeclimate.com/github/cerbero90/Date/badges/gpa.svg)](https://codeclimate.com/github/cerbero90/Date)
-[![Test Coverage](https://codeclimate.com/github/cerbero90/Date/badges/coverage.svg)](https://codeclimate.com/github/cerbero90/Date)
+
+[![Author](http://img.shields.io/badge/author-@cerbero90-blue.svg?style=flat-square)](https://twitter.com/cerbero90)
+[![Build Status](https://img.shields.io/travis/cerbero90/Date/master.svg?style=flat-square)](https://travis-ci.org/cerbero90/Date)
+[![Packagist Version](https://img.shields.io/packagist/v/cerbero/date.svg?style=flat-square&label=release)](https://packagist.org/packages/cerbero/date)
+[![Packagist](https://img.shields.io/packagist/l/cerbero/date.svg?style=flat-square)](LICENSE.md)
+[![Quality Score](https://img.shields.io/scrutinizer/g/cerbero90/Date.svg?style=flat-square)](https://scrutinizer-ci.com/g/cerbero90/Date)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/cerbero90/Date.svg?style=flat-square)](https://codeclimate.com/github/cerbero90/Date)
+[![Gratipay](https://img.shields.io/gratipay/cerbero.svg?style=flat-square)](https://gratipay.com/cerbero/)
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/25af65d6-5ec9-4702-8c68-e44bdc81bead/big.png)](https://insight.sensiolabs.com/projects/25af65d6-5ec9-4702-8c68-e44bdc81bead)
 
 Framework agnostic and easy to use tool to work with dates.
 
